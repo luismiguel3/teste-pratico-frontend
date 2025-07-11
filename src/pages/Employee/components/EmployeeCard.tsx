@@ -1,14 +1,6 @@
 import { useState } from "react";
 import { phoneMask } from "../../../utils/masks";
-
-interface Employee {
-  id: string;
-  name: string;
-  job: string;
-  admission_date: string;
-  phone: string;
-  image: string;
-}
+import type { Employee } from "../../../types/employee";
 
 interface EmployeeCardProps {
   employee: Employee;
@@ -29,7 +21,7 @@ export function EmployeeCard({ employee }: EmployeeCardProps) {
             alt="Foto do funcionário"
             className="w-10 h-10 rounded-full object-cover"
           />
-          <span className="font-medium">{employee.name}</span>
+          <span className="font-normal">{employee.name}</span>
         </div>
 
         <svg

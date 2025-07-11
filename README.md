@@ -59,7 +59,7 @@ npm install json-server --save-dev
 
 #### Executar o servidor JSON:
 ```bash
-json-server --watch db.json --port 3000
+npx json-server db.json
 ```
 
 O JSON Server estará rodando em: `http://localhost:3000`
@@ -89,10 +89,12 @@ src/
 │   │   ├── EmployeeTable.tsx # Tabela/Cards responsivos
 │   │   ├── EmployeeCard.tsx # Card para a versão mobile
 │   │   └── EmployeeRow.tsx # Linha para a versão desktop
-|   ├── hooks/ # Hooks específicos
+|   ├── hooks/ 
 |   |   ├── useEmployees.ts # Hook para buscar funcionários
 |   |   └── useEmployeeFilter.tsx # Hook para filtrar por nome, telefone, cargo
 │   └── App.tsx          # Componente principal
+├── types/
+│   ├── employee.ts # Tipos aos funcionários   
 └── utils/               # Utilitários
     └── masks.ts         # Máscaras de formatação
 

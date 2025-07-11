@@ -1,20 +1,6 @@
 import { useState, useEffect } from 'react';
+import type { Employee, UseEmployeesReturn } from '../../../types/employee';
 
-interface Employee {
-  id: string;
-  name: string;
-  job: string;
-  admission_date: string;
-  phone: string;
-  image: string;
-}
-
-interface UseEmployeesReturn {
-  data: Employee[];
-  loading: boolean;
-  error: string | null;
-  refetch: () => Promise<void>;
-}
 
 export function useEmployees(): UseEmployeesReturn {
   const [data, setData] = useState<Employee[]>([]);

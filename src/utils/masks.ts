@@ -7,10 +7,10 @@ export function phoneMask(value: string): string {
     return `+${numbers}`;
   } else if (numbers.length <= 4) {
     return `+${numbers.slice(0, 2)} (${numbers.slice(2)}`;
-  } else if (numbers.length <= 8) {
+  } else if (numbers.length <= 9) {
     return `+${numbers.slice(0, 2)} (${numbers.slice(2, 4)}) ${numbers.slice(4)}`;
   } else {
-    return `+${numbers.slice(0, 2)} (${numbers.slice(2, 4)}) ${numbers.slice(4, 8)}-${numbers.slice(8, 12)}`;
+    return `+${numbers.slice(0, 2)} (${numbers.slice(2, 4)}) ${numbers.slice(4, 9)}-${numbers.slice(9, 12)}`;
   }
 }
 

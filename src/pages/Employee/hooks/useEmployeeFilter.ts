@@ -1,14 +1,6 @@
 import { useMemo } from 'react';
 import { removePhoneMask } from '../../../utils/masks';
-
-interface Employee {
-  id: string;
-  name: string;
-  job: string;
-  admission_date: string;
-  phone: string;
-  image: string;
-}
+import type { Employee } from '../../../types/employee';
 
 export function useEmployeeFilter(employees: Employee[], filter: string) {
   return useMemo(() => {
