@@ -1,69 +1,146 @@
-# React + TypeScript + Vite
+# 🏢 BeTalent - Sistema de Funcionários
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um sistema moderno e responsivo para gestão de funcionários, desenvolvido com React, TypeScript e Vite. O projeto implementa uma interface limpa para visualização e busca de funcionários, com design responsivo que se adapta a diferentes dispositivos.
 
-Currently, two official plugins are available:
+## ✨ Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📱 **Design Responsivo**: Interface adaptativa para desktop e mobile
+- 🔍 **Busca em Tempo Real**: Filtro por nome, cargo ou telefone
+- 📊 **Visualização de Dados**: Tabela no desktop, cards expansíveis no mobile
+- 🎨 **Interface Moderna**: Design clean e intuitivo
+- 📞 **Formatação Automática**: Máscara para números de telefone
+- ⚡ **Performance Otimizada**: Hooks customizados e componentes reutilizáveis
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 18** - Biblioteca principal
+- **TypeScript** - Tipagem estática
+- **Vite** - Build tool e dev server
+- **Tailwind CSS** - Framework de CSS
+- **JSON Server** - Mock API para desenvolvimento
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📋 Pré-requisitos
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Antes de começar, certifique-se de ter instalado:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [Node.js](https://nodejs.org/) (versão 16 ou superior)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
+
+## 🚀 Como Executar o Projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone <url-do-repositorio>
+cd teste-pratico-betalent
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Instale as dependências
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+# ou
+yarn install
 ```
+
+### 3. Configure o JSON Server
+
+O projeto utiliza JSON Server para simular uma API. Siga os passos abaixo:
+
+#### Instalar JSON Server globalmente (recomendado)
+```bash
+npm install -g json-server
+```
+
+#### Ou instalar localmente no projeto
+```bash
+npm install json-server --save-dev
+```
+
+#### Executar o servidor JSON:
+```bash
+json-server --watch db.json --port 3000
+```
+
+O JSON Server estará rodando em: `http://localhost:3000`
+
+### 5. Executar o projeto React
+
+Em um novo terminal, execute:
+
+```bash
+npm run dev
+# ou
+yarn dev
+```
+
+O projeto estará disponível em: `http://localhost:5173`
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── components/           # Componentes reutilizáveis
+│   ├── Layout.tsx
+│   ├── SearchInput.tsx
+│   └── ...
+├── Pages/Employee/       # Página de funcionários
+│   ├── components/       # Componentes específicos da página
+│   │   ├── EmployeeTable.tsx # Tabela/Cards responsivos
+│   │   ├── EmployeeCard.tsx # Card para a versão mobile
+│   │   └── EmployeeRow.tsx # Linha para a versão desktop
+|   ├── hooks/ # Hooks específicos
+|   |   ├── useEmployees.ts # Hook para buscar funcionários
+|   |   └── useEmployeeFilter.tsx # Hook para filtrar por nome, telefone, cargo
+│   └── App.tsx          # Componente principal
+└── utils/               # Utilitários
+    └── masks.ts         # Máscaras de formatação
+
+```
+
+## 🎯 Scripts Disponíveis
+
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Gera build de produção
+- `npm run preview` - Preview do build de produção
+- `npm run lint` - Executa o ESLint
+
+## 📱 Funcionalidades por Dispositivo
+
+### Desktop
+- Tabela completa com todas as informações
+- Busca em tempo real
+- Hover effects nas linhas
+
+### Mobile
+- Cards expansíveis com animação
+- Header com foto e nome sempre visível
+- Detalhes expandem ao clicar
+
+## 🔧 Configuração da API
+
+O projeto está configurado para consumir dados de:
+```
+http://localhost:3000/employees
+```
+
+### Estrutura esperada dos dados:
+```typescript
+interface Employee {
+  id: string;
+  name: string;
+  job: string;
+  admission_date: string;
+  phone: string;
+  image: string;
+}
+```
+
+## 🎨 Customização
+
+### Cores principais (Tailwind)
+- `blue-primary`: Cor principal do tema
+- `gray-*`: Escala de cinzas para textos e backgrounds
+
+### Responsividade
+- Breakpoint mobile/desktop: `768px` (classe `md:`)
